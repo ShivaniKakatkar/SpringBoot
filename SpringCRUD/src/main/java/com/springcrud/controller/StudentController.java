@@ -4,10 +4,7 @@ import com.springcrud.entity.Student;
 import com.springcrud.service.StudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/students")
@@ -18,6 +15,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    //Create
     @PostMapping("/create")
     public ResponseEntity<Student> createStudent(@RequestBody Student student){
         System.out.println("Inside student controller");
@@ -27,4 +25,14 @@ public class StudentController {
                 .status(HttpStatus.CREATED)
                 .body(createdStudent);
     }
+
+    @GetMapping("/get/{id}")
+    public ResponseEntity<Student> getStudent(@PathVariable Long id){
+        Student studentResp = studentService.getStudent(id);
+        if (studentResp == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(studentResp);
+    }
+
 }
