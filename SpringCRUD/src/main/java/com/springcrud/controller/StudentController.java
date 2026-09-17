@@ -17,6 +17,7 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    //Create
     @PostMapping("/create")
     public ResponseEntity<Student> createStudent(@RequestBody Student student){
         System.out.println("Inside student controller");

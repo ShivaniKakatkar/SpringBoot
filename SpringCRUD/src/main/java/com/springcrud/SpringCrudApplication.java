@@ -7,8 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringCrudApplication {
 
     public static void main(String[] args) {
-//pull request change
-
         SpringApplication.run(SpringCrudApplication.class, args);
         System.out.println("Hello world");
     }
