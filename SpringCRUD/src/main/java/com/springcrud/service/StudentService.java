@@ -4,6 +4,7 @@ import com.springcrud.entity.Student;
 import com.springcrud.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,11 +21,22 @@ public class StudentService {
         System.out.println("Exiting student service");
         return studentResp;
     }
+
     public Student getStudent(Long id){
         Optional<Student> studentResp = studentRepository.findById(id);
+
         if (studentResp.isPresent()){
             return studentResp.get();
         }
         return null;
+    }
+
+    public List<Student> getAllStudent(){
+        List<Student> studentResp = studentRepository.findAll();
+
+        if (studentResp.isEmpty()){
+            return null;
+        }
+        return studentResp;
     }
 }
