@@ -16,6 +16,7 @@ public class StudentService {
     }
 
     public Student createStudent(Student studentReq){
+
         studentReq.setDeleted(false);
         System.out.println("Inside student service");
         Student studentResp = studentRepository.save(studentReq);

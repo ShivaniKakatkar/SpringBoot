@@ -1,18 +1,19 @@
 package com.springcrud.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Student {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private int age;
     private String email;
     private int rno;
     private String subject;
-    private Boolean deleted;
+    @Column(columnDefinition = "TINYINT(1)")
+    private boolean deleted;
 
     public long getId() {
         return id;
@@ -62,11 +63,11 @@ public class Student {
         this.subject = subject;
     }
 
-    public Boolean getDeleted() {
+    public boolean isDeleted() {
         return deleted;
     }
 
-    public void setDeleted(Boolean deleted) {
+    public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
 }
