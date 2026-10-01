@@ -1,7 +1,41 @@
 package com.springmvc;
 
-public class Main {
-    public static void main(String[] args) {
+import com.springmvc.config.WebConfig;
+import org.apache.catalina.Context;
+import org.apache.catalina.LifecycleException;
+import org.apache.catalina.startup.Tomcat;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
 
+import java.io.File;
+
+public class Main {
+    public static void main(String[] args) throws LifecycleException {
+
+        Tomcat tomcat = new Tomcat();
+
+        tomcat.setPort(8080);
+        tomcat.getConnector();
+
+        String contextPath = "";
+        String baseDoc = new File("src/main/webapps").getAbsolutePath();
+
+        System.out.println(baseDoc);
+        Context context = tomcat.addContext(contextPath, baseDoc);
+
+        AnnotationConfigWebApplicationContext springContext = new AnnotationConfigWebApplicationContext();
+        springContext.register(WebConfig.class);
+
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(springContext);
+
+        Tomcat.addServlet(context, "dispatcherServlet", dispatcherServlet);
+
+        context.addServletMappingDecoded("/", "dispatcherServlet");
+
+        tomcat.start();
+
+        System.out.println("Tomcat started on port 8080");
+
+        tomcat.getServer().await();
     }
 }
