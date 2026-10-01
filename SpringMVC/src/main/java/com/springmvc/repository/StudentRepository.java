@@ -18,12 +18,13 @@ public class StudentRepository {
 
     public Student save(Student studentReq){
         Student studentResp = studentDB.put(studentReq.getId(), studentReq);
-        return studentResp;
+        return studentReq;
     }
 
     public Student findById(Long id){
         return studentDB.get(id);
     }
+
     public List<Student> FindAll(){
         return new ArrayList<>(studentDB.values());
     }
