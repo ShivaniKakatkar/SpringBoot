@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean class="com.constinjec.Collections" name="col">
+        <constructor-arg>
+            <list>
+                <value>Listening Music</value>
+                <value>Reading</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg>
+            <value>Java</value>
+        </constructor-arg>
+        <constructor-arg>
+            <map>
+                <entry key="Java" value="First Priority"/>
+                <entry key="Html" value="Second Priority"/>
+            </map>
+        </constructor-arg>
+        <constructor-arg>
+            <props>
+                <prop key="L1">Java</prop>
+                <prop key="L2">Html</prop>
+            </props>
+        </constructor-arg>
+        <constructor-arg>
+            <ref bean="person"/>
+        </constructor-arg>
+    </bean>
+
+    <bean class="com.constinjec.Certify" name="cer">
+        <constructor-arg value="DSA JAVA CERTIFICATION"/>
+    </bean>
+
+    <bean name="person" class="com.constinjec.Person">
+        <constructor-arg value="Shivani" />
+<!--        "type" is given to resolve Ambiguity-->
+        <constructor-arg value="20" type="int"/>
+        <constructor-arg ref="cer"/>
+        <constructor-arg>
+            <list>
+                <value>Java</value>
+                <value>Python</value>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>

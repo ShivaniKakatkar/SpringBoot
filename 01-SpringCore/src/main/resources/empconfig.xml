@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+
+    <bean class="com.collections.Emp" name="emp1">
+        <property name="name" value="Shivani"/>
+        <property name="phones">
+            <list>
+                <value>1234567890</value>
+                <value>1234567890</value>
+                <value>4321876509</value>
+                <value>6543210987</value>
+            </list>
+        </property>
+        <property name="addresses">
+            <set>
+                <value>#401 Maruti Nagar</value>
+                <value>#441 Shivaji Nagar</value>
+                <value>#569 Hanuman Nagar</value>
+            </set>
+        </property>
+        <property name="courses">
+            <map>
+                <entry key="L1" value="Java"/>
+                <entry key="L2" value="Python"/>
+                <entry key="L3" value="HTML"/>
+            </map>
+        </property>
+        <property name="prop">
+            <props>
+                <prop key="Java">Backend Development Language</prop>
+                <prop key="HTML">Website Development language</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

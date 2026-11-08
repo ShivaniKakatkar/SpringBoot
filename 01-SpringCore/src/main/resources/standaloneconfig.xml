@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:list list-class="java.util.LinkedList" id="f1">
+        <value>Shivani</value>
+        <value>Sujal</value>
+        <value>Pritam</value>
+        <value>Candy</value>
+    </util:list>
+
+    <util:map map-class="java.util.HashMap" id="f2">
+        <entry key="java" value="3000"/>
+        <entry key="Spring" value="7000"/>
+        <entry key="Python" value="3000"/>
+    </util:map>
+    <util:properties id="f3">
+        <prop key="1">Java</prop>
+        <prop key="2">Python</prop>
+        <prop key="3">HTML</prop>
+    </util:properties>
+    <bean class="com.Standalonecollections.Person" name="p1">
+        <property name="name" ref="f1"/>
+        <property name="fees" ref="f2"/>
+
+        <property name="properties" ref="f3"/>
+
+    </bean>
+</beans>
